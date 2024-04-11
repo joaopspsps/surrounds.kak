@@ -1,12 +1,5 @@
 provide-module surrounds %{
 
-define-command surrounds-insert-mode -override -hidden %<
-	hook -always -once window ModeChange pop:insert:normal %<
-		execute-keys -with-hooks 'a'
-	>
-	execute-keys -with-hooks 'i'
->
-
 define-command surrounds-select-inner -override -hidden -docstring %<
 	surrounds-select-inner: shrink selection from both sides by one
 	character
@@ -49,6 +42,24 @@ define-command surrounds-add-key -override -hidden %<
 	>
 >
 
+define-command surrounds-add-left-right -override -hidden %<
+	prompt surrounds-add-left-right: %<
+		surrounds-add %val{text} %val{text}
+	>
+>
+
+define-command surrounds-add-left -override -hidden %<
+	prompt surrounds-add-left: %<
+		surrounds-add %val{text} ''
+	>
+>
+
+define-command surrounds-add-right -override -hidden %<
+	prompt surrounds-add-right: %<
+		surrounds-add '' %val{text}
+	>
+>
+
 define-command surrounds-add-html-tag -override -hidden %<
 	prompt surrounds-add-html-tag: %<
 		surrounds-add "<%val{text}>" "</%val{text}>"
@@ -83,7 +94,6 @@ define-command surrounds-map-pair -override -params 4 %<
 
 declare-user-mode surrounds
 
-map global surrounds i ': surrounds-insert-mode<ret>' -docstring 'insert mode'
 map global surrounds s ': surrounds-select-inner<ret>' -docstring 'select inner'
 map global surrounds <backspace> ': surrounds-delete<ret>' -docstring 'delete'
 
@@ -93,6 +103,9 @@ map global surrounds t ': surrounds-add-html-tag<ret>' -docstring 'add html tag'
 map global surrounds e ': surrounds-add-tex-env<ret>' -docstring 'add latex env'
 map global surrounds <a-e> ': surrounds-add-tex-begin-env<ret>' -docstring 'add latex begin env'
 map global surrounds f ': surrounds-add-function<ret>' -docstring 'add function'
+map global surrounds , ': surrounds-add-left-right<ret>' -docstring 'add left-right'
+map global surrounds h ': surrounds-add-left<ret>' -docstring 'add left'
+map global surrounds l ': surrounds-add-right<ret>' -docstring 'add right'
 
 surrounds-map-pair <space> ' ' ' ' 'space'
 surrounds-map-pair $ $ $ 'dollar'
