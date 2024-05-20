@@ -73,7 +73,7 @@ examples.
     selection with the text given on the prompt:
 
         define-command surrounds-add-prefix %{
-            prompt surrounds-add-function: %{
+            prompt surrounds-add-prefix: %{
                 surrounds-add "%val{text}: " ''
             }
         }
