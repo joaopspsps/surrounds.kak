@@ -23,7 +23,7 @@ define-command surrounds-add -params 2 -override -docstring %<
 	and <after> after the selection
 > %<
 	evaluate-commands -itersel -save-regs '"' %<
-		set-register '"' "%arg{1}%val{selection}%arg{2}"
+		set-register '"' "%arg{1}%reg{dot}%arg{2}"
 		execute-keys 'R'
 	>
 >
@@ -109,6 +109,14 @@ define-command surrounds-add-latex-bra -override %<
 	surrounds-add '\langle ' '|'
 >
 
+define-command surrounds-add-latex-left-right-parentheses -override %<
+	surrounds-add '\left( ' ' \right)'
+>
+
+define-command surrounds-add-latex-left-right-brackets -override %<
+	surrounds-add '\left[ ' ' \right]'
+>
+
 # ==============================
 # Create surrounds mode mappings
 # ==============================
@@ -131,6 +139,10 @@ map global surrounds f ': surrounds-add-function<ret>' -docstring 'add function'
 map global surrounds , ': surrounds-add-left-right<ret>' -docstring 'add left-right'
 map global surrounds h ': surrounds-add-left<ret>' -docstring 'add left'
 map global surrounds l ': surrounds-add-right<ret>' -docstring 'add right'
+map global surrounds <a-(> ': surrounds-add-latex-left-right-parentheses<ret>' -docstring 'add latex \left( and \right)'
+map global surrounds <a-)> ': surrounds-add-latex-left-right-parentheses<ret>' -docstring 'add latex \left( and \right)'
+map global surrounds <a-[> ': surrounds-add-latex-left-right-brackets<ret>' -docstring 'add latex \left[ and \right]'
+map global surrounds <a-]> ': surrounds-add-latex-left-right-brackets<ret>' -docstring 'add latex \left[ and \right]'
 
 _surrounds-map-pair <space> ' ' ' ' 'space'
 _surrounds-map-pair $ $ $ 'dollar'
