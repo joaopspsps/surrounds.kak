@@ -80,7 +80,6 @@ examples.
 
 ## Limitations
 
--   `surrounds-add-line` does not work well for text that is not at the
-    start of the line.
--   There is no easy way to delete surrounds with more than one
-    character. However, it is possible to undo the commands with `u`.
+-   There is currently no easy way to delete surrounds with more than
+    one character. However, it is possible to undo the commands with
+    `u`.
