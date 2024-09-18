@@ -40,12 +40,12 @@ And want to change it to:
 
 To do so, create the surrounds from inside out:
 
-1.  Surround with s: `<space>s<space>`
+1.  Surround with s: `<space>sks`
 2.  Surround with spaces: `<space>s<space>`
-3.  Surround with parentheses: `<space>s(<space>`
+3.  Surround with parentheses: `<space>s)`
 4.  Surround with latex command `\texttt`: `<space>setexttt<ret>`
 5.  Surround with lines (and indent using `indentwidth`):
-    `<space>s<ret><space>`
+    `<space>s<ret>`
 6.  Surround with latex begin/end: `<space>s<a-e>center<ret>`
 
 ## Creating custom surrounds
