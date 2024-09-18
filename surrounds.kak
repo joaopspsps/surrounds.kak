@@ -6,11 +6,16 @@ define-command surrounds-select-text -override -params 1 -docstring %<
 	execute-keys "<a-/>%arg{1}<ret>?%arg{1}<ret>"
 >
 
-define-command surrounds-select-inner -override -docstring %<
-	surrounds-select-inner: shrink selection from both sides by one
-	character
+define-command surrounds-shrink -override -docstring %<
+	surrounds-shrink: shrink selection from both sides
 > %<
-	execute-keys '<a-:><a-;>L<a-;>H'
+	execute-keys "<a-:><a-;>L<a-;>H"
+>
+
+define-command surrounds-expand -override -docstring %<
+	surrounds-expand: expand selection from both sides
+> %<
+	execute-keys "<a-:><a-;>H<a-;>L"
 >
 
 define-command surrounds-delete -override -docstring %<
@@ -127,7 +132,11 @@ define-command _surrounds-map-pair -override -hidden -params 4 %<
 
 declare-user-mode surrounds
 
+map global surrounds i ': surrounds-shrink<ret>' -docstring 'shrink selection'
+map global surrounds o ': surrounds-expand<ret>' -docstring 'expand selection'
+
 map global surrounds <backspace> ': surrounds-delete<ret>' -docstring 'delete character before and after'
+
 map global surrounds <ret> ': surrounds-add-line<ret>' -docstring 'add line'
 map global surrounds <a-(> ': surrounds-add-latex-left-right-parentheses<ret>' -docstring 'add latex \left( and \right)'
 map global surrounds <a-)> ': surrounds-add-latex-left-right-parentheses<ret>' -docstring 'add latex \left( and \right)'
