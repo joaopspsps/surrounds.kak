@@ -141,5 +141,5 @@ which all the other functionality is built:
 
 ## Licensing
 
-`surrounds.kak` is licensed under the terms of the Unlicense license.
-See the `LICENSE` file for details.
+`surrounds.kak` is licensed under the terms of the [Unlicense
+license](LICENSE).
