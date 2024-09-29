@@ -30,16 +30,6 @@ define-command surrounds-add -override -params 2 -docstring %<
 	>
 >
 
-define-command surrounds-add-newlines -override -docstring %<
-	surrounds-add-newlines: surround selection with newlines (and indent
-	with indentwidth)
-> %<
-	surrounds-add '
-' '
-'
-	execute-keys '<gt>'
->
-
 define-command surrounds-add-html-tag -override -params 1 -docstring %<
 	surrounds-add-html-tag ?: surround selection with <?> and </?>
 
@@ -81,6 +71,7 @@ define-command surrounds-undo-escape -override -params 2 -docstring %<
 		set-register b %arg{2}  # <b>
 
 		# Special regex characters
+		# XXX I'm not exactly a fan of this
 		set-register / '\\|\||\(|\)|\[|\]|\{|\}|\*|\+|\^|\$|\.|\?'
 
 		# Escape special characters in <a>
@@ -106,10 +97,6 @@ define-command surrounds-undo-single -override -docstring %<
 # Create mappings
 # ===============
 
-# ---------
-# surrounds
-# ---------
-
 declare-user-mode surrounds
 declare-user-mode surrounds-undo
 
@@ -120,8 +107,8 @@ map global surrounds <backspace> %{: surrounds-undo-single<ret>} -docstring 'del
 # Misc
 map global surrounds      <space> %{: surrounds-add  ' ' ' '<ret>} -docstring 'add spaces'
 map global surrounds-undo <space> %{: surrounds-undo-escape ' ' ' '<ret>} -docstring 'undo spaces'
-map global surrounds      <ret>   %{: surrounds-add-newlines<ret>} -docstring 'add newlines'
-map global surrounds-undo <ret>   %{: surrounds-undo \n \n<ret><lt>} -docstring 'undo newlines'
+map global surrounds      <ret>   %{: surrounds-add '<c-v><ret>' '<c-v><ret>'<ret>} -docstring 'add newlines'
+map global surrounds-undo <ret>   %{: surrounds-undo \n \n<ret>} -docstring 'undo newlines'
 map global surrounds      *       %{: surrounds-add  * *<ret>} -docstring 'add asterisks'
 map global surrounds-undo *       %{: surrounds-undo-escape * *<ret>} -docstring 'undo asterisks'
 map global surrounds      $       %{: surrounds-add  $ $<ret>} -docstring 'add dollar signs'
