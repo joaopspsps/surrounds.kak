@@ -102,7 +102,7 @@ which all the other functionality is built:
     text between these strings. This allows you to then replace the
     removed surrounds with a different one.
 
-    ![NOTE] The arguments `<a>` and `<b>` are parsed as regex strings,
+    \![NOTE\] The arguments `<a>` and `<b>` are parsed as regex strings,
     so special characters such as `(` and `.` must be manually escaped.
     Another option is to use `surrounds-undo-escape`.
 
@@ -138,3 +138,8 @@ which all the other functionality is built:
 ## Roadmap
 
 -   Implement a mode for just selecting surrounds without deleting them.
+
+## Licensing
+
+`surrounds.kak` is licensed under the terms of the Unlicense license.
+See the `LICENSE` file for details.
