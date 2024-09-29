@@ -1,5 +1,7 @@
 # `surrounds.kak`
 
+> `execute-keys 'iurround<esc>h6H<space>sksa.kak'`
+
 ## Installation
 
 Place `surrounds.kak` in your autoload directory
@@ -48,7 +50,7 @@ To do so, create the surrounds from inside out:
     `<space>s<ret>`
 6.  Surround with latex begin/end: `<space>s<a-e>center<ret>`
 
-## Creating custom surrounds
+## Custom surrounds
 
 It's possible to use the `surrounds-add` to create custom surrounds. See
 the `surrounds-add-*` commands in `surrounds.kak` commands for more
@@ -77,9 +79,3 @@ examples.
                 surrounds-add "%val{text}: " ''
             }
         }
-
-## Limitations
-
--   There is currently no easy way to delete surrounds with more than
-    one character. However, it is possible to undo the commands with
-    `u`.
