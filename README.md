@@ -102,9 +102,10 @@ which all the other functionality is built:
     text between these strings. This allows you to then replace the
     removed surrounds with a different one.
 
-    \![NOTE\] The arguments `<a>` and `<b>` are parsed as regex strings,
-    so special characters such as `(` and `.` must be manually escaped.
-    Another option is to use `surrounds-undo-escape`.
+    > **Note**: The arguments `<a>` and `<b>` are parsed as regex
+    > strings, so special characters such as `(` and `.` must be
+    > manually escaped. Another option is to use
+    > `surrounds-undo-escape`.
 
 -   `surrounds-undo-escape <a> <b>`: same as `surrounds-undo`, but with
     special regex characters inside `<a>` and `<b>` escaped.
